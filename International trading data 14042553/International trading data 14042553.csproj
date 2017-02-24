@@ -79,6 +79,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AVLTreeStructure\AVLTreeStructure.csproj">
+      <Project>{a4b94672-5172-4b08-aadd-057a792423eb}</Project>
+      <Name>AVLTreeStructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileReaderUtility\FileReaderUtility.csproj">
+      <Project>{1932437a-e599-43d7-986a-78c414ced29a}</Project>
+      <Name>FileReaderUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,6 +14,16 @@ namespace AVLTreeStructure.Country
             inOrder(root, ref buffer);
         }
 
+        private void winOrder(AVLNode<Country> tree, ref List<Country> countryNames)
+        {
+            if(tree != null)
+            {
+                winOrder(tree.Left, ref countryNames);
+                countryNames.Add(tree.Data);
+                winOrder(tree.Right, ref countryNames);
+            }
+        }
+
         private void inOrder(AVLNode<Country> tree, ref string buffer)
         {
             if (tree != null)
