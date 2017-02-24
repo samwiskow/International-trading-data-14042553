@@ -108,5 +108,38 @@ namespace AVLTreeStructure.Country
                 return getNodebyName(name, ref tree.Left);
             }
         }
+
+        public void GetNodesLike(string name, ref List<Country> NodeList)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                getAllNodes(name, ref NodeList, root);
+            }
+            else if (name.Length > 0)
+            {
+                name = name.ToLower();
+                getnodesLike(name, ref NodeList, root);
+            }
+        }
+
+        private void getnodesLike(string name, ref List<Country> NodeList, AVLNode<Country> tree)
+        {
+            if (tree != null)
+            {
+                getnodesLike(name, ref NodeList, tree.Left);
+                if (tree.Data.Name.ToLower().Contains(name))
+                {
+                    NodeList.Add(tree.Data);
+                }
+                getnodesLike(name, ref NodeList, tree.Right);
+            }
+        }
+
+        private void getAllNodes(string name, ref List<Country> NodeList, AVLNode<Country> tree)
+        {
+            getnodesLike(name, ref NodeList, tree.Left);
+            NodeList.Add(tree.Data);
+            getnodesLike(name, ref NodeList, tree.Right);
+        }
     }
 }

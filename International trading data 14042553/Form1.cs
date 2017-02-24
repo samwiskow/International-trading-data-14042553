@@ -16,15 +16,16 @@ namespace International_trading_data_14042553
     {
         CountryTree CTree = new CountryTree();
         CsvReader csvRead = new CsvReader();
-        string buffer = "";
+        List<Country> Buffer = new List<Country>();
+        string SearchUsing = "";
 
         public TradingDataForm()
         {
             csvRead.readCsvIn();
             csvRead.FileContent.ForEach(item => CTree.InsertItem(item));
             InitializeComponent();
-            csvRead.FileContent.ForEach(item => CreateListViewItem(CountryLV, item));
-            CTree.InOrder(ref buffer);
+            populateListView(SearchUsing);
+            //csvRead.FileContent.ForEach(item => CreateListViewItem(CountryLV, item));
         }
 
         public static void CreateListViewItem(ListView listView, Country obj)
@@ -32,9 +33,6 @@ namespace International_trading_data_14042553
             ListViewItem item = new ListViewItem();
             item.Tag = obj;
             item.Text = obj.Name;
-
-            // Other requirements as needed
-
             listView.Items.Add(item);
         }
 
@@ -42,6 +40,20 @@ namespace International_trading_data_14042553
         {
             Console.WriteLine(e.Item.Text);
             Country country = (Country)e.Item.Tag;
+        }
+
+        private void populateListView(string name)
+        {
+            //write some stuff here that goes through the tree and checks
+            CountryLV.Items.Clear();
+            Buffer = new List<Country>();
+            CTree.GetNodesLike(name, ref Buffer);
+            Buffer.ForEach(item => CreateListViewItem(CountryLV, item));
+        }
+
+        private void SearchTB_TextChanged(object sender, EventArgs e)
+        {
+            populateListView(SearchTB.Text.ToLower());
         }
     }
 }

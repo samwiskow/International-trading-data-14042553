@@ -35,6 +35,7 @@
             this.CountryInfoPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.CountryInfoLabel = new System.Windows.Forms.Label();
             this.CountryLV = new System.Windows.Forms.ListView();
+            this.SearchTB = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,11 +104,20 @@
             this.CountryLV.View = System.Windows.Forms.View.SmallIcon;
             this.CountryLV.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.CountryLV_ItemSelectionChanged);
             // 
+            // SearchTB
+            // 
+            this.SearchTB.Location = new System.Drawing.Point(12, 375);
+            this.SearchTB.Name = "SearchTB";
+            this.SearchTB.Size = new System.Drawing.Size(115, 20);
+            this.SearchTB.TabIndex = 7;
+            this.SearchTB.TextChanged += new System.EventHandler(this.SearchTB_TextChanged);
+            // 
             // TradingDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 633);
+            this.Controls.Add(this.SearchTB);
             this.Controls.Add(this.CountryLV);
             this.Controls.Add(this.CountryInfoLabel);
             this.Controls.Add(this.CountryInfoPanel);
@@ -131,6 +141,7 @@
         private System.Windows.Forms.FlowLayoutPanel CountryInfoPanel;
         private System.Windows.Forms.Label CountryInfoLabel;
         private System.Windows.Forms.ListView CountryLV;
+        private System.Windows.Forms.TextBox SearchTB;
     }
 }
 
