@@ -46,6 +46,7 @@ namespace FileReaderUtility
                 else
                 {
                     string[] row = line.Split(',');
+                    row[0] = row[0].Replace("_", " ");
                     string[] partners = row[5].Split(';', '[', ']');
                     LinkedList<string> tradePartners = new LinkedList<string>();
 
