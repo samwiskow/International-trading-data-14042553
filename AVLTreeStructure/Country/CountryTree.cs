@@ -14,16 +14,6 @@ namespace AVLTreeStructure.Country
             inOrder(root, ref buffer);
         }
 
-        private void winOrder(AVLNode<Country> tree, ref List<Country> countryNames)
-        {
-            if(tree != null)
-            {
-                winOrder(tree.Left, ref countryNames);
-                countryNames.Add(tree.Data);
-                winOrder(tree.Right, ref countryNames);
-            }
-        }
-
         private void inOrder(AVLNode<Country> tree, ref string buffer)
         {
             if (tree != null)
@@ -74,7 +64,7 @@ namespace AVLTreeStructure.Country
             {
                 return false;
             }
-            else if (name.CompareTo(tree.Data.Name) == 0)
+            else if (name.ToLower().CompareTo(tree.Data.Name.ToLower()) == 0)
             {
                 return true;
             }
@@ -111,13 +101,13 @@ namespace AVLTreeStructure.Country
 
         public void GetNodesLike(string name, ref List<Country> NodeList)
         {
-            if (string.IsNullOrEmpty(name))
+            name = name.ToLower();
+            if (name == "" || name == "search countries...")
             {
-                getAllNodes(name, ref NodeList, root);
+                getAllNodes(ref NodeList, root);
             }
-            else if (name.Length > 0)
+            else if (name.Length > 0 && !name.Contains("search countries..."))
             {
-                name = name.ToLower();
                 getnodesLike(name, ref NodeList, root);
             }
         }
@@ -135,11 +125,14 @@ namespace AVLTreeStructure.Country
             }
         }
 
-        private void getAllNodes(string name, ref List<Country> NodeList, AVLNode<Country> tree)
+        private void getAllNodes(ref List<Country> NodeList, AVLNode<Country> tree)
         {
-            getnodesLike(name, ref NodeList, tree.Left);
-            NodeList.Add(tree.Data);
-            getnodesLike(name, ref NodeList, tree.Right);
+            if (tree != null)
+            {
+                getAllNodes(ref NodeList, tree.Left);
+                NodeList.Add(tree.Data);
+                getAllNodes(ref NodeList, tree.Right);
+            }
         }
     }
 }

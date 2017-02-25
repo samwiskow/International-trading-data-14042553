@@ -32,11 +32,32 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CountryInfoPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.CountryInfoLabel = new System.Windows.Forms.Label();
             this.CountryLV = new System.Windows.Forms.ListView();
             this.SearchTB = new System.Windows.Forms.TextBox();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.ResetBtn = new System.Windows.Forms.Button();
+            this.addTPBtn = new System.Windows.Forms.Button();
+            this.RemoveTPBtn = new System.Windows.Forms.Button();
+            this.TradePartnersLB = new System.Windows.Forms.ListBox();
+            this.TradePartnersLabel = new System.Windows.Forms.Label();
+            this.HdiUD = new System.Windows.Forms.NumericUpDown();
+            this.HDIRankingLabel = new System.Windows.Forms.Label();
+            this.TradeBalanceUD = new System.Windows.Forms.NumericUpDown();
+            this.TradeBalanceLabel = new System.Windows.Forms.Label();
+            this.InflationUD = new System.Windows.Forms.NumericUpDown();
+            this.InflationLabel = new System.Windows.Forms.Label();
+            this.GDPGrowthUD = new System.Windows.Forms.NumericUpDown();
+            this.GDPGrowthLabel = new System.Windows.Forms.Label();
+            this.CountryNameTB = new System.Windows.Forms.TextBox();
+            this.CountryNameLabel = new System.Windows.Forms.Label();
+            this.CountryInfoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HdiUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TradeBalanceUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InflationUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GDPGrowthUD)).BeginInit();
+            this.CountryInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CountryTreeViewLabel
@@ -54,9 +75,9 @@
             this.addToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(664, 24);
             this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "Add Menu";
             // 
             // addToolStripMenuItem
             // 
@@ -72,17 +93,10 @@
             this.countryToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.countryToolStripMenuItem.Text = "Country";
             // 
-            // CountryInfoPanel
-            // 
-            this.CountryInfoPanel.Location = new System.Drawing.Point(331, 52);
-            this.CountryInfoPanel.Name = "CountryInfoPanel";
-            this.CountryInfoPanel.Size = new System.Drawing.Size(615, 302);
-            this.CountryInfoPanel.TabIndex = 4;
-            // 
             // CountryInfoLabel
             // 
             this.CountryInfoLabel.AutoSize = true;
-            this.CountryInfoLabel.Location = new System.Drawing.Point(328, 36);
+            this.CountryInfoLabel.Location = new System.Drawing.Point(151, 36);
             this.CountryInfoLabel.Name = "CountryInfoLabel";
             this.CountryInfoLabel.Size = new System.Drawing.Size(98, 13);
             this.CountryInfoLabel.TabIndex = 5;
@@ -97,7 +111,7 @@
             this.CountryLV.Location = new System.Drawing.Point(12, 52);
             this.CountryLV.MultiSelect = false;
             this.CountryLV.Name = "CountryLV";
-            this.CountryLV.Size = new System.Drawing.Size(115, 302);
+            this.CountryLV.Size = new System.Drawing.Size(115, 162);
             this.CountryLV.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.CountryLV.TabIndex = 6;
             this.CountryLV.UseCompatibleStateImageBehavior = false;
@@ -106,28 +120,254 @@
             // 
             // SearchTB
             // 
-            this.SearchTB.Location = new System.Drawing.Point(12, 375);
+            this.SearchTB.Location = new System.Drawing.Point(12, 220);
             this.SearchTB.Name = "SearchTB";
             this.SearchTB.Size = new System.Drawing.Size(115, 20);
             this.SearchTB.TabIndex = 7;
             this.SearchTB.TextChanged += new System.EventHandler(this.SearchTB_TextChanged);
+            this.SearchTB.Enter += new System.EventHandler(this.SearchTB_Enter);
+            this.SearchTB.Leave += new System.EventHandler(this.SearchTB_Leave);
+            // 
+            // SaveBtn
+            // 
+            this.SaveBtn.Location = new System.Drawing.Point(235, 220);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(116, 23);
+            this.SaveBtn.TabIndex = 9;
+            this.SaveBtn.Text = "Save Changes";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            // 
+            // ResetBtn
+            // 
+            this.ResetBtn.Location = new System.Drawing.Point(154, 220);
+            this.ResetBtn.Name = "ResetBtn";
+            this.ResetBtn.Size = new System.Drawing.Size(75, 23);
+            this.ResetBtn.TabIndex = 10;
+            this.ResetBtn.Text = "Reset";
+            this.ResetBtn.UseVisualStyleBackColor = true;
+            this.ResetBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ResetBtn_MouseClick);
+            // 
+            // addTPBtn
+            // 
+            this.addTPBtn.Location = new System.Drawing.Point(485, 220);
+            this.addTPBtn.Name = "addTPBtn";
+            this.addTPBtn.Size = new System.Drawing.Size(75, 23);
+            this.addTPBtn.TabIndex = 11;
+            this.addTPBtn.Text = "Add";
+            this.addTPBtn.UseVisualStyleBackColor = true;
+            // 
+            // RemoveTPBtn
+            // 
+            this.RemoveTPBtn.Location = new System.Drawing.Point(572, 220);
+            this.RemoveTPBtn.Name = "RemoveTPBtn";
+            this.RemoveTPBtn.Size = new System.Drawing.Size(75, 23);
+            this.RemoveTPBtn.TabIndex = 12;
+            this.RemoveTPBtn.Text = "Remove";
+            this.RemoveTPBtn.UseVisualStyleBackColor = true;
+            this.RemoveTPBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RemoveTPBtn_MouseClick);
+            // 
+            // TradePartnersLB
+            // 
+            this.TradePartnersLB.FormattingEnabled = true;
+            this.TradePartnersLB.Location = new System.Drawing.Point(374, 59);
+            this.TradePartnersLB.Name = "TradePartnersLB";
+            this.TradePartnersLB.Size = new System.Drawing.Size(91, 95);
+            this.TradePartnersLB.TabIndex = 11;
+            // 
+            // TradePartnersLabel
+            // 
+            this.TradePartnersLabel.AutoSize = true;
+            this.TradePartnersLabel.Location = new System.Drawing.Point(318, 56);
+            this.TradePartnersLabel.Name = "TradePartnersLabel";
+            this.TradePartnersLabel.Size = new System.Drawing.Size(46, 26);
+            this.TradePartnersLabel.TabIndex = 10;
+            this.TradePartnersLabel.Text = "Trade Partners";
+            // 
+            // HdiUD
+            // 
+            this.HdiUD.Location = new System.Drawing.Point(247, 59);
+            this.HdiUD.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.HdiUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.HdiUD.Name = "HdiUD";
+            this.HdiUD.Size = new System.Drawing.Size(45, 20);
+            this.HdiUD.TabIndex = 9;
+            // 
+            // HDIRankingLabel
+            // 
+            this.HDIRankingLabel.AutoSize = true;
+            this.HDIRankingLabel.Location = new System.Drawing.Point(183, 56);
+            this.HDIRankingLabel.Name = "HDIRankingLabel";
+            this.HDIRankingLabel.Size = new System.Drawing.Size(47, 26);
+            this.HDIRankingLabel.TabIndex = 8;
+            this.HDIRankingLabel.Text = "HDI Ranking";
+            // 
+            // TradeBalanceUD
+            // 
+            this.TradeBalanceUD.DecimalPlaces = 1;
+            this.TradeBalanceUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.TradeBalanceUD.Location = new System.Drawing.Point(60, 59);
+            this.TradeBalanceUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.TradeBalanceUD.Name = "TradeBalanceUD";
+            this.TradeBalanceUD.Size = new System.Drawing.Size(95, 20);
+            this.TradeBalanceUD.TabIndex = 7;
+            // 
+            // TradeBalanceLabel
+            // 
+            this.TradeBalanceLabel.AutoSize = true;
+            this.TradeBalanceLabel.Location = new System.Drawing.Point(3, 56);
+            this.TradeBalanceLabel.Name = "TradeBalanceLabel";
+            this.TradeBalanceLabel.Size = new System.Drawing.Size(46, 26);
+            this.TradeBalanceLabel.TabIndex = 6;
+            this.TradeBalanceLabel.Text = "Trade Balance";
+            // 
+            // InflationUD
+            // 
+            this.InflationUD.DecimalPlaces = 2;
+            this.InflationUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.InflationUD.Location = new System.Drawing.Point(374, 13);
+            this.InflationUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.InflationUD.Name = "InflationUD";
+            this.InflationUD.Size = new System.Drawing.Size(91, 20);
+            this.InflationUD.TabIndex = 5;
+            // 
+            // InflationLabel
+            // 
+            this.InflationLabel.AutoSize = true;
+            this.InflationLabel.Location = new System.Drawing.Point(318, 10);
+            this.InflationLabel.Name = "InflationLabel";
+            this.InflationLabel.Size = new System.Drawing.Size(44, 13);
+            this.InflationLabel.TabIndex = 4;
+            this.InflationLabel.Text = "Inflation";
+            // 
+            // GDPGrowthUD
+            // 
+            this.GDPGrowthUD.DecimalPlaces = 1;
+            this.GDPGrowthUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.GDPGrowthUD.Location = new System.Drawing.Point(247, 13);
+            this.GDPGrowthUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.GDPGrowthUD.Name = "GDPGrowthUD";
+            this.GDPGrowthUD.Size = new System.Drawing.Size(45, 20);
+            this.GDPGrowthUD.TabIndex = 3;
+            // 
+            // GDPGrowthLabel
+            // 
+            this.GDPGrowthLabel.AutoSize = true;
+            this.GDPGrowthLabel.Location = new System.Drawing.Point(183, 10);
+            this.GDPGrowthLabel.Name = "GDPGrowthLabel";
+            this.GDPGrowthLabel.Size = new System.Drawing.Size(41, 26);
+            this.GDPGrowthLabel.TabIndex = 2;
+            this.GDPGrowthLabel.Text = "GDP Growth";
+            // 
+            // CountryNameTB
+            // 
+            this.CountryNameTB.Location = new System.Drawing.Point(60, 13);
+            this.CountryNameTB.Name = "CountryNameTB";
+            this.CountryNameTB.ReadOnly = true;
+            this.CountryNameTB.Size = new System.Drawing.Size(95, 20);
+            this.CountryNameTB.TabIndex = 1;
+            // 
+            // CountryNameLabel
+            // 
+            this.CountryNameLabel.AutoSize = true;
+            this.CountryNameLabel.Location = new System.Drawing.Point(3, 10);
+            this.CountryNameLabel.Name = "CountryNameLabel";
+            this.CountryNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.CountryNameLabel.TabIndex = 0;
+            this.CountryNameLabel.Text = "Name";
+            this.CountryNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CountryInfoPanel
+            // 
+            this.CountryInfoPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CountryInfoPanel.ColumnCount = 6;
+            this.CountryInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.76471F));
+            this.CountryInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.15213F));
+            this.CountryInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.18458F));
+            this.CountryInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.60446F));
+            this.CountryInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.56187F));
+            this.CountryInfoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.54361F));
+            this.CountryInfoPanel.Controls.Add(this.CountryNameLabel, 0, 0);
+            this.CountryInfoPanel.Controls.Add(this.CountryNameTB, 1, 0);
+            this.CountryInfoPanel.Controls.Add(this.GDPGrowthLabel, 2, 0);
+            this.CountryInfoPanel.Controls.Add(this.GDPGrowthUD, 3, 0);
+            this.CountryInfoPanel.Controls.Add(this.InflationLabel, 4, 0);
+            this.CountryInfoPanel.Controls.Add(this.InflationUD, 5, 0);
+            this.CountryInfoPanel.Controls.Add(this.TradeBalanceLabel, 0, 1);
+            this.CountryInfoPanel.Controls.Add(this.TradeBalanceUD, 1, 1);
+            this.CountryInfoPanel.Controls.Add(this.HDIRankingLabel, 2, 1);
+            this.CountryInfoPanel.Controls.Add(this.HdiUD, 3, 1);
+            this.CountryInfoPanel.Controls.Add(this.TradePartnersLabel, 4, 1);
+            this.CountryInfoPanel.Controls.Add(this.TradePartnersLB, 5, 1);
+            this.CountryInfoPanel.Location = new System.Drawing.Point(154, 52);
+            this.CountryInfoPanel.Name = "CountryInfoPanel";
+            this.CountryInfoPanel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.CountryInfoPanel.RowCount = 2;
+            this.CountryInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.26316F));
+            this.CountryInfoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.73684F));
+            this.CountryInfoPanel.Size = new System.Drawing.Size(493, 162);
+            this.CountryInfoPanel.TabIndex = 8;
             // 
             // TradingDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 633);
+            this.ClientSize = new System.Drawing.Size(664, 261);
+            this.Controls.Add(this.RemoveTPBtn);
+            this.Controls.Add(this.addTPBtn);
+            this.Controls.Add(this.ResetBtn);
+            this.Controls.Add(this.SaveBtn);
+            this.Controls.Add(this.CountryInfoPanel);
             this.Controls.Add(this.SearchTB);
             this.Controls.Add(this.CountryLV);
             this.Controls.Add(this.CountryInfoLabel);
-            this.Controls.Add(this.CountryInfoPanel);
             this.Controls.Add(this.CountryTreeViewLabel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(680, 300);
+            this.MinimumSize = new System.Drawing.Size(680, 300);
             this.Name = "TradingDataForm";
             this.Text = "International Trading Data";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HdiUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TradeBalanceUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InflationUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GDPGrowthUD)).EndInit();
+            this.CountryInfoPanel.ResumeLayout(false);
+            this.CountryInfoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,10 +378,26 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem countryToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel CountryInfoPanel;
         private System.Windows.Forms.Label CountryInfoLabel;
         private System.Windows.Forms.ListView CountryLV;
         private System.Windows.Forms.TextBox SearchTB;
+        private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button ResetBtn;
+        private System.Windows.Forms.Button addTPBtn;
+        private System.Windows.Forms.Button RemoveTPBtn;
+        private System.Windows.Forms.ListBox TradePartnersLB;
+        private System.Windows.Forms.Label TradePartnersLabel;
+        private System.Windows.Forms.NumericUpDown HdiUD;
+        private System.Windows.Forms.Label HDIRankingLabel;
+        private System.Windows.Forms.NumericUpDown TradeBalanceUD;
+        private System.Windows.Forms.Label TradeBalanceLabel;
+        private System.Windows.Forms.NumericUpDown InflationUD;
+        private System.Windows.Forms.Label InflationLabel;
+        private System.Windows.Forms.NumericUpDown GDPGrowthUD;
+        private System.Windows.Forms.Label GDPGrowthLabel;
+        private System.Windows.Forms.TextBox CountryNameTB;
+        private System.Windows.Forms.Label CountryNameLabel;
+        private System.Windows.Forms.TableLayoutPanel CountryInfoPanel;
     }
 }
 
