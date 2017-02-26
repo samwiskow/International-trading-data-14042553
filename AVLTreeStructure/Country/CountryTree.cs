@@ -134,5 +134,55 @@ namespace AVLTreeStructure.Country
                 getAllNodes(ref NodeList, tree.Right);
             }
         }
+
+        public void RemoveItem(string item)
+        {
+            removeItem(item, ref root);
+        }
+
+        private void removeItem(string item, ref AVLNode<Country> tree)
+        {
+            if (tree == null)
+            {
+                return;
+            }
+            else if (item.CompareTo(tree.Data.Name) < 0)
+            {
+                removeItem(item, ref tree.Left);
+            }
+            else if (item.CompareTo(tree.Data.Name) > 0)
+            {
+                removeItem(item, ref tree.Right);
+            }
+
+            //found item
+            else if (tree.Left == null)
+            {
+                tree = tree.Right;
+            }
+            else if (tree.Right == null)
+            {
+                tree = tree.Left;
+            }
+            else
+            {
+                string newRoot = leastItem(tree.Right);
+                tree.Data.Name = newRoot;
+                removeItem(newRoot, ref tree.Right);
+            }
+
+        }
+
+        private string leastItem(AVLNode<Country> tree)
+        {
+            if (tree.Left == null)
+            {
+                return tree.Data.Name;
+            }
+            else
+            {
+                return leastItem(tree.Left);
+            }
+        }
     }
 }

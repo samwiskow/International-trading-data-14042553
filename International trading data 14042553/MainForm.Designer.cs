@@ -30,14 +30,13 @@
         {
             this.CountryTreeViewLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CountryInfoLabel = new System.Windows.Forms.Label();
             this.CountryLV = new System.Windows.Forms.ListView();
             this.SearchTB = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.ResetBtn = new System.Windows.Forms.Button();
-            this.addTPBtn = new System.Windows.Forms.Button();
             this.RemoveTPBtn = new System.Windows.Forms.Button();
             this.TradePartnersLB = new System.Windows.Forms.ListBox();
             this.TradePartnersLabel = new System.Windows.Forms.Label();
@@ -52,6 +51,10 @@
             this.CountryNameTB = new System.Windows.Forms.TextBox();
             this.CountryNameLabel = new System.Windows.Forms.Label();
             this.CountryInfoPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.RmvCountryBtn = new System.Windows.Forms.Button();
+            this.AddTradePartnerTB = new System.Windows.Forms.TextBox();
+            this.AddTPBtn = new System.Windows.Forms.Button();
+            this.AddCountryBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HdiUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TradeBalanceUD)).BeginInit();
@@ -72,26 +75,26 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(664, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(660, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "Add Menu";
             // 
-            // addToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.countryToolStripMenuItem});
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.addToolStripMenuItem.Text = "Add";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // countryToolStripMenuItem
+            // exitToolStripMenuItem
             // 
-            this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
-            this.countryToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.countryToolStripMenuItem.Text = "Country";
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // CountryInfoLabel
             // 
@@ -111,7 +114,7 @@
             this.CountryLV.Location = new System.Drawing.Point(12, 52);
             this.CountryLV.MultiSelect = false;
             this.CountryLV.Name = "CountryLV";
-            this.CountryLV.Size = new System.Drawing.Size(115, 162);
+            this.CountryLV.Size = new System.Drawing.Size(115, 209);
             this.CountryLV.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.CountryLV.TabIndex = 6;
             this.CountryLV.UseCompatibleStateImageBehavior = false;
@@ -120,7 +123,7 @@
             // 
             // SearchTB
             // 
-            this.SearchTB.Location = new System.Drawing.Point(12, 220);
+            this.SearchTB.Location = new System.Drawing.Point(12, 270);
             this.SearchTB.Name = "SearchTB";
             this.SearchTB.Size = new System.Drawing.Size(115, 20);
             this.SearchTB.TabIndex = 7;
@@ -130,7 +133,7 @@
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(235, 220);
+            this.SaveBtn.Location = new System.Drawing.Point(444, 268);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(116, 23);
             this.SaveBtn.TabIndex = 9;
@@ -140,7 +143,7 @@
             // 
             // ResetBtn
             // 
-            this.ResetBtn.Location = new System.Drawing.Point(154, 220);
+            this.ResetBtn.Location = new System.Drawing.Point(363, 268);
             this.ResetBtn.Name = "ResetBtn";
             this.ResetBtn.Size = new System.Drawing.Size(75, 23);
             this.ResetBtn.TabIndex = 10;
@@ -148,18 +151,9 @@
             this.ResetBtn.UseVisualStyleBackColor = true;
             this.ResetBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ResetBtn_MouseClick);
             // 
-            // addTPBtn
-            // 
-            this.addTPBtn.Location = new System.Drawing.Point(485, 220);
-            this.addTPBtn.Name = "addTPBtn";
-            this.addTPBtn.Size = new System.Drawing.Size(75, 23);
-            this.addTPBtn.TabIndex = 11;
-            this.addTPBtn.Text = "Add";
-            this.addTPBtn.UseVisualStyleBackColor = true;
-            // 
             // RemoveTPBtn
             // 
-            this.RemoveTPBtn.Location = new System.Drawing.Point(572, 220);
+            this.RemoveTPBtn.Location = new System.Drawing.Point(572, 238);
             this.RemoveTPBtn.Name = "RemoveTPBtn";
             this.RemoveTPBtn.Size = new System.Drawing.Size(75, 23);
             this.RemoveTPBtn.TabIndex = 12;
@@ -172,7 +166,8 @@
             this.TradePartnersLB.FormattingEnabled = true;
             this.TradePartnersLB.Location = new System.Drawing.Point(374, 59);
             this.TradePartnersLB.Name = "TradePartnersLB";
-            this.TradePartnersLB.Size = new System.Drawing.Size(91, 95);
+            this.TradePartnersLB.Size = new System.Drawing.Size(116, 95);
+            this.TradePartnersLB.Sorted = true;
             this.TradePartnersLB.TabIndex = 11;
             // 
             // TradePartnersLabel
@@ -340,13 +335,55 @@
             this.CountryInfoPanel.Size = new System.Drawing.Size(493, 162);
             this.CountryInfoPanel.TabIndex = 8;
             // 
+            // RmvCountryBtn
+            // 
+            this.RmvCountryBtn.Location = new System.Drawing.Point(235, 268);
+            this.RmvCountryBtn.Name = "RmvCountryBtn";
+            this.RmvCountryBtn.Size = new System.Drawing.Size(122, 23);
+            this.RmvCountryBtn.TabIndex = 13;
+            this.RmvCountryBtn.Text = "Remove Country";
+            this.RmvCountryBtn.UseVisualStyleBackColor = true;
+            this.RmvCountryBtn.Click += new System.EventHandler(this.RmvCountryBtn_Click);
+            // 
+            // AddTradePartnerTB
+            // 
+            this.AddTradePartnerTB.Location = new System.Drawing.Point(528, 212);
+            this.AddTradePartnerTB.Name = "AddTradePartnerTB";
+            this.AddTradePartnerTB.Size = new System.Drawing.Size(116, 20);
+            this.AddTradePartnerTB.TabIndex = 14;
+            this.AddTradePartnerTB.Enter += new System.EventHandler(this.AddTradePartnerTB_Enter);
+            this.AddTradePartnerTB.Leave += new System.EventHandler(this.AddTradePartnerTB_Leave);
+            // 
+            // AddTPBtn
+            // 
+            this.AddTPBtn.Location = new System.Drawing.Point(491, 238);
+            this.AddTPBtn.Name = "AddTPBtn";
+            this.AddTPBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddTPBtn.TabIndex = 15;
+            this.AddTPBtn.Text = "Add";
+            this.AddTPBtn.UseVisualStyleBackColor = true;
+            this.AddTPBtn.Click += new System.EventHandler(this.AddTPBtn_Click);
+            // 
+            // AddCountryBtn
+            // 
+            this.AddCountryBtn.Location = new System.Drawing.Point(154, 268);
+            this.AddCountryBtn.Name = "AddCountryBtn";
+            this.AddCountryBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddCountryBtn.TabIndex = 16;
+            this.AddCountryBtn.Text = "Add Country";
+            this.AddCountryBtn.UseVisualStyleBackColor = true;
+            this.AddCountryBtn.Click += new System.EventHandler(this.AddCountryBtn_Click);
+            // 
             // TradingDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 261);
+            this.ClientSize = new System.Drawing.Size(660, 303);
+            this.Controls.Add(this.AddCountryBtn);
+            this.Controls.Add(this.AddTPBtn);
+            this.Controls.Add(this.AddTradePartnerTB);
+            this.Controls.Add(this.RmvCountryBtn);
             this.Controls.Add(this.RemoveTPBtn);
-            this.Controls.Add(this.addTPBtn);
             this.Controls.Add(this.ResetBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.CountryInfoPanel);
@@ -355,9 +392,8 @@
             this.Controls.Add(this.CountryInfoLabel);
             this.Controls.Add(this.CountryTreeViewLabel);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(680, 300);
-            this.MinimumSize = new System.Drawing.Size(680, 300);
             this.Name = "TradingDataForm";
             this.Text = "International Trading Data";
             this.menuStrip1.ResumeLayout(false);
@@ -376,14 +412,13 @@
         #endregion
         private System.Windows.Forms.Label CountryTreeViewLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem countryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label CountryInfoLabel;
         private System.Windows.Forms.ListView CountryLV;
         private System.Windows.Forms.TextBox SearchTB;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button ResetBtn;
-        private System.Windows.Forms.Button addTPBtn;
         private System.Windows.Forms.Button RemoveTPBtn;
         private System.Windows.Forms.ListBox TradePartnersLB;
         private System.Windows.Forms.Label TradePartnersLabel;
@@ -398,6 +433,10 @@
         private System.Windows.Forms.TextBox CountryNameTB;
         private System.Windows.Forms.Label CountryNameLabel;
         private System.Windows.Forms.TableLayoutPanel CountryInfoPanel;
+        private System.Windows.Forms.Button RmvCountryBtn;
+        private System.Windows.Forms.TextBox AddTradePartnerTB;
+        private System.Windows.Forms.Button AddTPBtn;
+        private System.Windows.Forms.Button AddCountryBtn;
     }
 }
 

@@ -25,6 +25,7 @@ namespace International_trading_data_14042553
             csvRead.FileContent.ForEach(item => CTree.InsertItem(item));
             InitializeComponent();
             SearchTB.Text = "Search countries...";
+            AddTradePartnerTB.Text = "Add Trade Partner...";
             populateListView("");
         }
 
@@ -41,7 +42,7 @@ namespace International_trading_data_14042553
             GetCountryInfo(e.Item.Text);
         }
 
-        private void populateListView(string name)
+        public void populateListView(string name)
         {
             CountryLV.Items.Clear();
             Buffer = new List<Country>();
@@ -144,6 +145,91 @@ namespace International_trading_data_14042553
             {
                 country.TradePartners.AddLast(partner);
             }
+        }
+
+        private void RmvCountryBtn_Click(object sender, EventArgs e)
+        {
+            if (CountryNameTB.Text.Length > 0)
+            {
+                try
+                {
+                    CTree.RemoveItem(CountryNameTB.Text);
+                    populateListView("");
+                    if (CountryLV.Items.Count > 0)
+                    {
+                        GetCountryInfo(CountryLV.Items[0].Text);
+                    }
+                    else
+                    {
+                        resetCountryInfoFields();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine(ex);
+                    MessageBox.Show("Could not remove selected country", "Error", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a country first", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void resetCountryInfoFields()
+        {
+            CountryNameTB.Text = "";
+            GDPGrowthUD.Value = 0;
+            TradeBalanceUD.Value = 0;
+            TradePartnersLB.Items.Clear();
+            InflationUD.Value = 0;
+            HdiUD.Value = 0;
+        }
+
+        private void AddTPBtn_Click(object sender, EventArgs e)
+        {
+            if (CountryNameTB.Text.Length > 0)
+            {
+                if (AddTradePartnerTB.Text.Length > 0)
+                {
+                    try
+                    {
+                        TradePartnersLB.Items.Add(AddTradePartnerTB.Text);
+                        AddTradePartnerTB.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.WriteLine(ex);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a country first!", "Warning", MessageBoxButtons.OK);
+            }
+        }
+
+        private void AddTradePartnerTB_Enter(object sender, EventArgs e)
+        {
+            AddTradePartnerTB.Text = "";
+        }
+
+        private void AddTradePartnerTB_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(AddTradePartnerTB.Text))
+                AddTradePartnerTB.Text = "Add Trade Partner...";
+        }
+
+        private void AddCountryBtn_Click(object sender, EventArgs e)
+        {
+            //Open new form here
+            AddCountryForm addCountry = new AddCountryForm(this);
+            addCountry.Show();
+        }
+
+        public void AddCountry(Country C)
+        {
+            CTree.InsertItem(C);
         }
     }
 }
