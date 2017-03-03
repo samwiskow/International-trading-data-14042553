@@ -64,16 +64,6 @@ namespace AVLTreeStructure
             }
         }
 
-        public void Copy(AVLTree<T> tree2)
-        {
-            copy(ref root, tree2.root);
-        }
-
-        private void copy(ref AVLNode<T> tree, AVLNode<T> tree2)
-        {
-
-        }
-
         public int Count()
         {
             int counter = 0;
@@ -165,6 +155,20 @@ namespace AVLTreeStructure
                 removeItem(newRoot, ref tree.Right);
             }
 
+            if(tree == null)
+            {
+                return;
+            }
+
+            tree.BalanceFactor = height(tree.Left) - height(tree.Right);
+            if (tree.BalanceFactor <= -2)
+            {
+                rotateLeft(ref tree);
+            }
+            if (tree.BalanceFactor >= 2)
+            {
+                rotateRight(ref tree);
+            }
         }
 
         private T leastItem(AVLNode<T> tree)
@@ -203,7 +207,7 @@ namespace AVLTreeStructure
             {
                 rotateLeft(ref tree);
             }
-            if (tree.BalanceFactor >= -2)
+            if (tree.BalanceFactor >= 2)
             {
                 rotateRight(ref tree);
             }

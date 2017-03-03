@@ -69,15 +69,18 @@ namespace International_trading_data_14042553
         private void GetCountryInfo(string name)
         {
             Country country = CTree.GetNodeByName(name);
-            CountryNameTB.Text = country.Name;
-            GDPGrowthUD.Value = (decimal)country.gdpGrowth;
-            InflationUD.Value = (decimal)country.Inflation;
-            TradeBalanceUD.Value = (decimal)country.TradeBalance;
-            HdiUD.Value = (decimal)country.hdiRanking;
-            TradePartnersLB.Items.Clear();
-            foreach (string partner in country.TradePartners)
+            if (country != null)
             {
-                TradePartnersLB.Items.Add(partner);
+                CountryNameTB.Text = country.Name;
+                GDPGrowthUD.Value = (decimal)country.gdpGrowth;
+                InflationUD.Value = (decimal)country.Inflation;
+                TradeBalanceUD.Value = (decimal)country.TradeBalance;
+                HdiUD.Value = (decimal)country.hdiRanking;
+                TradePartnersLB.Items.Clear();
+                foreach (string partner in country.TradePartners)
+                {
+                    TradePartnersLB.Items.Add(partner);
+                }
             }
         }
 
@@ -153,7 +156,7 @@ namespace International_trading_data_14042553
             {
                 try
                 {
-                    CTree.RemoveItem(CountryNameTB.Text);
+                    CTree.RemoveItem(CTree.GetNodeByName(CountryNameTB.Text));
                     populateListView("");
                     if (CountryLV.Items.Count > 0)
                     {
