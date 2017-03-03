@@ -26,14 +26,21 @@ namespace International_trading_data_14042553
         {
             if (AddTPTB.Text.Length > 0)
             {
-                try
+                if (AddTPTB.Text != "Add Trade Partner...")
                 {
-                    TradePartnersLB.Items.Add(AddTPTB.Text);
-                    AddTPTB.Text = "";
+                    try
+                    {
+                        TradePartnersLB.Items.Add(AddTPTB.Text);
+                        AddTPTB.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.WriteLine(ex);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Trace.WriteLine(ex);
+                    MessageBox.Show("Please enter a valid trade partner", "Warning", MessageBoxButtons.OK);
                 }
             }
         }
@@ -75,17 +82,26 @@ namespace International_trading_data_14042553
 
         private void AddCountryBtn_Click(object sender, EventArgs e)
         {
+            bool errors = CountryNameTB.Text.Length == 0;
+            Console.WriteLine(errors);
+            if (!errors){
+                LinkedList<string> TP = new LinkedList<string>();
+                foreach (string partner in TradePartnersLB.Items)
+                {
+                    TP.AddLast(partner);
+                }
+                Country country = new Country(CountryNameTB.Text, (double)GdpUD.Value, (double)InflationUD.Value, (double)TradeBalanceUD.Value, (int)HdiUD.Value, TP);
+                MainForm.AddCountry(country);
+                MainForm.populateListView("");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid country name!", "Error", MessageBoxButtons.OK);
+            }
             // Create country object and add it to the tree
             // TODO: valdation of this
-            LinkedList<string> TP = new LinkedList<string>();
-            foreach (string partner in TradePartnersLB.Items)
-            {
-                TP.AddLast(partner);
-            }
-            Country country = new Country(CountryNameTB.Text, (double)GdpUD.Value, (double)InflationUD.Value, (double)TradeBalanceUD.Value, (int)HdiUD.Value, TP);
-            MainForm.AddCountry(country);
-            MainForm.populateListView("");
-            this.Close();
+            
         }
     }
 }

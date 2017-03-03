@@ -190,18 +190,26 @@ namespace International_trading_data_14042553
         {
             if (CountryNameTB.Text.Length > 0)
             {
-                if (AddTradePartnerTB.Text.Length > 0)
+                if (AddTradePartnerTB.Text != "Add Trade Partner...")
                 {
-                    try
+                    if (AddTradePartnerTB.Text.Length > 0)
                     {
-                        TradePartnersLB.Items.Add(AddTradePartnerTB.Text);
-                        AddTradePartnerTB.Text = "";
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.WriteLine(ex);
+                        try
+                        {
+                            TradePartnersLB.Items.Add(AddTradePartnerTB.Text);
+                            AddTradePartnerTB.Text = "";
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.WriteLine(ex);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Please enter a valid trade partner", "Warning", MessageBoxButtons.OK);
+                }
+                
             }
             else
             {
@@ -230,6 +238,27 @@ namespace International_trading_data_14042553
         public void AddCountry(Country C)
         {
             CTree.InsertItem(C);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public int getHeight()
+        {
+            return CTree.Height();
+        }
+
+        public int getCount()
+        {
+            return CTree.Count();
+        }
+
+        private void treeInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TreeInfoForm TreeInfoForm = new TreeInfoForm(this);
+            TreeInfoForm.Show();
         }
     }
 }

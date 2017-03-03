@@ -51,10 +51,12 @@
             this.CountryNameTB = new System.Windows.Forms.TextBox();
             this.CountryNameLabel = new System.Windows.Forms.Label();
             this.CountryInfoPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.RmvCountryBtn = new System.Windows.Forms.Button();
             this.AddTradePartnerTB = new System.Windows.Forms.TextBox();
             this.AddTPBtn = new System.Windows.Forms.Button();
-            this.AddCountryBtn = new System.Windows.Forms.Button();
+            this.treeInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSelectedCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HdiUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TradeBalanceUD)).BeginInit();
@@ -75,7 +77,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(660, 24);
@@ -85,6 +88,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.treeInformationToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -93,8 +97,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // CountryInfoLabel
             // 
@@ -133,7 +138,7 @@
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(444, 268);
+            this.SaveBtn.Location = new System.Drawing.Point(235, 268);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(116, 23);
             this.SaveBtn.TabIndex = 9;
@@ -143,7 +148,7 @@
             // 
             // ResetBtn
             // 
-            this.ResetBtn.Location = new System.Drawing.Point(363, 268);
+            this.ResetBtn.Location = new System.Drawing.Point(154, 268);
             this.ResetBtn.Name = "ResetBtn";
             this.ResetBtn.Size = new System.Drawing.Size(75, 23);
             this.ResetBtn.TabIndex = 10;
@@ -335,16 +340,6 @@
             this.CountryInfoPanel.Size = new System.Drawing.Size(493, 162);
             this.CountryInfoPanel.TabIndex = 8;
             // 
-            // RmvCountryBtn
-            // 
-            this.RmvCountryBtn.Location = new System.Drawing.Point(235, 268);
-            this.RmvCountryBtn.Name = "RmvCountryBtn";
-            this.RmvCountryBtn.Size = new System.Drawing.Size(122, 23);
-            this.RmvCountryBtn.TabIndex = 13;
-            this.RmvCountryBtn.Text = "Remove Country";
-            this.RmvCountryBtn.UseVisualStyleBackColor = true;
-            this.RmvCountryBtn.Click += new System.EventHandler(this.RmvCountryBtn_Click);
-            // 
             // AddTradePartnerTB
             // 
             this.AddTradePartnerTB.Location = new System.Drawing.Point(528, 212);
@@ -364,25 +359,43 @@
             this.AddTPBtn.UseVisualStyleBackColor = true;
             this.AddTPBtn.Click += new System.EventHandler(this.AddTPBtn_Click);
             // 
-            // AddCountryBtn
+            // treeInformationToolStripMenuItem
             // 
-            this.AddCountryBtn.Location = new System.Drawing.Point(154, 268);
-            this.AddCountryBtn.Name = "AddCountryBtn";
-            this.AddCountryBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddCountryBtn.TabIndex = 16;
-            this.AddCountryBtn.Text = "Add Country";
-            this.AddCountryBtn.UseVisualStyleBackColor = true;
-            this.AddCountryBtn.Click += new System.EventHandler(this.AddCountryBtn_Click);
+            this.treeInformationToolStripMenuItem.Name = "treeInformationToolStripMenuItem";
+            this.treeInformationToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.treeInformationToolStripMenuItem.Text = "Tree Information";
+            this.treeInformationToolStripMenuItem.Click += new System.EventHandler(this.treeInformationToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCountryToolStripMenuItem,
+            this.removeSelectedCountryToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // addCountryToolStripMenuItem
+            // 
+            this.addCountryToolStripMenuItem.Name = "addCountryToolStripMenuItem";
+            this.addCountryToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.addCountryToolStripMenuItem.Text = "Add Country";
+            this.addCountryToolStripMenuItem.Click += new System.EventHandler(this.AddCountryBtn_Click);
+            // 
+            // removeSelectedCountryToolStripMenuItem
+            // 
+            this.removeSelectedCountryToolStripMenuItem.Name = "removeSelectedCountryToolStripMenuItem";
+            this.removeSelectedCountryToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.removeSelectedCountryToolStripMenuItem.Text = "Remove Selected Country";
+            this.removeSelectedCountryToolStripMenuItem.Click += new System.EventHandler(this.RmvCountryBtn_Click);
             // 
             // TradingDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 303);
-            this.Controls.Add(this.AddCountryBtn);
             this.Controls.Add(this.AddTPBtn);
             this.Controls.Add(this.AddTradePartnerTB);
-            this.Controls.Add(this.RmvCountryBtn);
             this.Controls.Add(this.RemoveTPBtn);
             this.Controls.Add(this.ResetBtn);
             this.Controls.Add(this.SaveBtn);
@@ -433,10 +446,12 @@
         private System.Windows.Forms.TextBox CountryNameTB;
         private System.Windows.Forms.Label CountryNameLabel;
         private System.Windows.Forms.TableLayoutPanel CountryInfoPanel;
-        private System.Windows.Forms.Button RmvCountryBtn;
         private System.Windows.Forms.TextBox AddTradePartnerTB;
         private System.Windows.Forms.Button AddTPBtn;
-        private System.Windows.Forms.Button AddCountryBtn;
+        private System.Windows.Forms.ToolStripMenuItem treeInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCountryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeSelectedCountryToolStripMenuItem;
     }
 }
 
