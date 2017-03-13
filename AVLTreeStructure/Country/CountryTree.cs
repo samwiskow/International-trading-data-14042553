@@ -53,27 +53,6 @@ namespace AVLTreeStructure.Country
             }
         }
 
-        public Boolean Contains(string name)
-        {
-            return contains(name, root);
-        }
-
-        private Boolean contains(string name, AVLNode<Country> tree)
-        {
-            if (tree == null)
-            {
-                return false;
-            }
-            else if (name.ToLower().CompareTo(tree.Data.Name.ToLower()) == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return (contains(name, tree.Left) || contains(name, tree.Right));
-            }
-        }
-
         public Country GetNodeByName(string name)
         {
             return getNodebyName(name, ref root);
@@ -132,6 +111,34 @@ namespace AVLTreeStructure.Country
                 getAllNodes(ref NodeList, tree.Left);
                 NodeList.Add(tree.Data);
                 getAllNodes(ref NodeList, tree.Right);
+            }
+        }
+
+        public void CalculateBestTradePotential(ref string bestCountry)
+        {
+            double tradePotential = 0;
+            calculateBestTradePotentail(ref bestCountry, ref tradePotential, root);
+        }
+
+        private void calculateBestTradePotentail(ref string bestCountry, ref double tradePotential, AVLNode<Country> tree)
+        {
+            if (tree != null)
+            {
+                double tempTradePot = 0;
+                calculateBestTradePotentail(ref bestCountry, ref tradePotential, tree.Left);
+                foreach(string country in tree.Data.TradePartners)
+                {
+                    Country temp = GetNodeByName(country);
+                    if(country != null)
+                    {
+                        tempTradePot += temp.gdpGrowth;
+                    }
+                }
+                if(tempTradePot > tradePotential){
+                    tradePotential = tempTradePot;
+                    bestCountry = tree.Data.Name;
+                }
+                calculateBestTradePotentail(ref bestCountry, ref tradePotential, tree.Right);
             }
         }
     }//Class

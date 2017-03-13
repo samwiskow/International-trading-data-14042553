@@ -17,7 +17,7 @@ namespace International_trading_data_14042553
             InitializeComponent();
             TreeCountTB.Text = form.getCount().ToString();
             TreeHeightTB.Text = form.getHeight().ToString();
-            //TradePotentialTB.Text = form.GetBestTradePotential();
+            TradePotentialTB.Text = form.GetBestTradePotential();
         }
     }
 }

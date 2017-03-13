@@ -17,6 +17,7 @@ namespace International_trading_data_14042553
     {
         CountryTree CTree = new CountryTree();
         CsvReader csvRead = new CsvReader();
+        CSVWriter csvWrite = new CSVWriter();
         List<Country> Buffer = new List<Country>();
 
         public TradingDataForm()
@@ -262,6 +263,30 @@ namespace International_trading_data_14042553
         {
             TreeInfoForm TreeInfoForm = new TreeInfoForm(this);
             TreeInfoForm.Show();
+        }
+
+        public string GetBestTradePotential()
+        {
+            string country = "";
+            CTree.CalculateBestTradePotential(ref country);
+            return country;
+        }
+
+        // Writes the tree currently displayed to a csv file
+        // can be found at ..\International trading data 14042553\International trading data 14042553\bin\Debug\countriesUpdated.csv
+        // Deliberately chosen to create a new file instead of modifying the existing one so as not to interfere with marking
+        private void exportTreeToCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool success = csvWrite.write(Buffer);
+
+            if (success)
+            {
+                MessageBox.Show("Data Successfully written to CSV", "Success", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Data could not be written to CSV", "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }

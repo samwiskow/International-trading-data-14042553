@@ -31,7 +31,11 @@
             this.CountryTreeViewLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSelectedCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CountryInfoLabel = new System.Windows.Forms.Label();
             this.CountryLV = new System.Windows.Forms.ListView();
             this.SearchTB = new System.Windows.Forms.TextBox();
@@ -53,10 +57,7 @@
             this.CountryInfoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.AddTradePartnerTB = new System.Windows.Forms.TextBox();
             this.AddTPBtn = new System.Windows.Forms.Button();
-            this.treeInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSelectedCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportTreeToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HdiUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TradeBalanceUD)).BeginInit();
@@ -89,17 +90,48 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.treeInformationToolStripMenuItem,
+            this.exportTreeToCSVToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // treeInformationToolStripMenuItem
+            // 
+            this.treeInformationToolStripMenuItem.Name = "treeInformationToolStripMenuItem";
+            this.treeInformationToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.treeInformationToolStripMenuItem.Text = "Tree Information";
+            this.treeInformationToolStripMenuItem.Click += new System.EventHandler(this.treeInformationToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCountryToolStripMenuItem,
+            this.removeSelectedCountryToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // addCountryToolStripMenuItem
+            // 
+            this.addCountryToolStripMenuItem.Name = "addCountryToolStripMenuItem";
+            this.addCountryToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.addCountryToolStripMenuItem.Text = "Add Country";
+            this.addCountryToolStripMenuItem.Click += new System.EventHandler(this.AddCountryBtn_Click);
+            // 
+            // removeSelectedCountryToolStripMenuItem
+            // 
+            this.removeSelectedCountryToolStripMenuItem.Name = "removeSelectedCountryToolStripMenuItem";
+            this.removeSelectedCountryToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.removeSelectedCountryToolStripMenuItem.Text = "Remove Selected Country";
+            this.removeSelectedCountryToolStripMenuItem.Click += new System.EventHandler(this.RmvCountryBtn_Click);
             // 
             // CountryInfoLabel
             // 
@@ -359,35 +391,12 @@
             this.AddTPBtn.UseVisualStyleBackColor = true;
             this.AddTPBtn.Click += new System.EventHandler(this.AddTPBtn_Click);
             // 
-            // treeInformationToolStripMenuItem
+            // exportTreeToCSVToolStripMenuItem
             // 
-            this.treeInformationToolStripMenuItem.Name = "treeInformationToolStripMenuItem";
-            this.treeInformationToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.treeInformationToolStripMenuItem.Text = "Tree Information";
-            this.treeInformationToolStripMenuItem.Click += new System.EventHandler(this.treeInformationToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCountryToolStripMenuItem,
-            this.removeSelectedCountryToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // addCountryToolStripMenuItem
-            // 
-            this.addCountryToolStripMenuItem.Name = "addCountryToolStripMenuItem";
-            this.addCountryToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.addCountryToolStripMenuItem.Text = "Add Country";
-            this.addCountryToolStripMenuItem.Click += new System.EventHandler(this.AddCountryBtn_Click);
-            // 
-            // removeSelectedCountryToolStripMenuItem
-            // 
-            this.removeSelectedCountryToolStripMenuItem.Name = "removeSelectedCountryToolStripMenuItem";
-            this.removeSelectedCountryToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.removeSelectedCountryToolStripMenuItem.Text = "Remove Selected Country";
-            this.removeSelectedCountryToolStripMenuItem.Click += new System.EventHandler(this.RmvCountryBtn_Click);
+            this.exportTreeToCSVToolStripMenuItem.Name = "exportTreeToCSVToolStripMenuItem";
+            this.exportTreeToCSVToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exportTreeToCSVToolStripMenuItem.Text = "Export Tree to CSV";
+            this.exportTreeToCSVToolStripMenuItem.Click += new System.EventHandler(this.exportTreeToCSVToolStripMenuItem_Click);
             // 
             // TradingDataForm
             // 
@@ -452,6 +461,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCountryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedCountryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportTreeToCSVToolStripMenuItem;
     }
 }
 

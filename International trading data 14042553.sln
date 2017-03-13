@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVLTreeStructure", "AVLTree
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReaderUtility", "FileReaderUtility\FileReaderUtility.csproj", "{1932437A-E599-43D7-986A-78C414CED29A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{905F2927-3FF7-4DAF-8EB3-48E4F0ACA495}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1932437A-E599-43D7-986A-78C414CED29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1932437A-E599-43D7-986A-78C414CED29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1932437A-E599-43D7-986A-78C414CED29A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905F2927-3FF7-4DAF-8EB3-48E4F0ACA495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905F2927-3FF7-4DAF-8EB3-48E4F0ACA495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905F2927-3FF7-4DAF-8EB3-48E4F0ACA495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905F2927-3FF7-4DAF-8EB3-48E4F0ACA495}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

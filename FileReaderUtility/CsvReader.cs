@@ -47,6 +47,7 @@ namespace FileReaderUtility
                 {
                     string[] row = line.Split(',');
                     row[0] = row[0].Replace("_", " ");
+                    row[5] = row[5].Replace("_", " ");
                     string[] partners = row[5].Split(';', '[', ']');
                     LinkedList<string> tradePartners = new LinkedList<string>();
 
@@ -54,7 +55,6 @@ namespace FileReaderUtility
                     {
                         if (traders != "")
                         {
-                            //Console.Write(" tradepartner: " + traders);
                             tradePartners.AddLast(traders);
                         }
                     }
