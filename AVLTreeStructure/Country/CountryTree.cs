@@ -9,50 +9,7 @@ namespace AVLTreeStructure.Country
 {
     public class CountryTree : AVLTree<Country>
     {
-        public new void InOrder(ref string buffer)
-        {
-            inOrder(root, ref buffer);
-        }
-
-        private void inOrder(AVLNode<Country> tree, ref string buffer)
-        {
-            if (tree != null)
-            {
-                inOrder(tree.Left, ref buffer);
-                buffer += tree.Data.Name.ToString() + ",";
-                inOrder(tree.Right, ref buffer);
-            }
-        }
-        public new void PreOrder(ref string buffer)
-        {
-            preorder(root, ref buffer);
-        }
-
-        private void preorder(AVLNode<Country> tree, ref string buffer)
-        {
-            if (tree != null)
-            {
-                buffer += tree.Data.Name.ToString() + ",";
-                preorder(tree.Left, ref buffer);
-                preorder(tree.Right, ref buffer);
-            }
-        }
-
-        public new void PostOrder(ref string buffer)
-        {
-            postOrder(root, ref buffer);
-        }
-
-        private void postOrder(AVLNode<Country> tree, ref string buffer)
-        {
-            if (tree != null)
-            {
-                postOrder(tree.Left, ref buffer);
-                postOrder(tree.Right, ref buffer);
-                buffer += tree.Data.Name.ToString() + ",";
-            }
-        }
-
+        // Returns an country based on exact match
         public Country GetNodeByName(string name)
         {
             return getNodebyName(name, ref root);
@@ -78,6 +35,7 @@ namespace AVLTreeStructure.Country
             }
         }
 
+        // returns either all countries in the tree or countries that contain letters entered in the search bar
         public void GetNodesLike(string name, ref List<Country> NodeList)
         {
             name = name.ToLower();
@@ -91,6 +49,7 @@ namespace AVLTreeStructure.Country
             }
         }
 
+        // Returns a list of countires that contain the specified string
         private void getnodesLike(string name, ref List<Country> NodeList, AVLNode<Country> tree)
         {
             if (tree != null)
@@ -104,6 +63,7 @@ namespace AVLTreeStructure.Country
             }
         }
 
+        // Returns all countries in the tree
         private void getAllNodes(ref List<Country> NodeList, AVLNode<Country> tree)
         {
             if (tree != null)
@@ -114,12 +74,16 @@ namespace AVLTreeStructure.Country
             }
         }
 
+        // Used to calculate the country with the best trade potential in the tree
         public void CalculateBestTradePotential(ref string bestCountry)
         {
             double tradePotential = 0;
             calculateBestTradePotentail(ref bestCountry, ref tradePotential, root);
         }
 
+
+        // Here it is assumed that a countries trade potentail is calculated by the sum of the gdpGrowth attribute of all of that 
+        // country's trade partners
         private void calculateBestTradePotentail(ref string bestCountry, ref double tradePotential, AVLNode<Country> tree)
         {
             if (tree != null)
@@ -129,7 +93,7 @@ namespace AVLTreeStructure.Country
                 foreach(string country in tree.Data.TradePartners)
                 {
                     Country temp = GetNodeByName(country);
-                    if(country != null)
+                    if(temp != null)
                     {
                         tempTradePot += temp.gdpGrowth;
                     }

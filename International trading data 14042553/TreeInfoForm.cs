@@ -15,6 +15,7 @@ namespace International_trading_data_14042553
         public TreeInfoForm(TradingDataForm form)
         {
             InitializeComponent();
+            // Sets the texboxes to display the correct data
             TreeCountTB.Text = form.getCount().ToString();
             TreeHeightTB.Text = form.getHeight().ToString();
             TradePotentialTB.Text = form.GetBestTradePotential();

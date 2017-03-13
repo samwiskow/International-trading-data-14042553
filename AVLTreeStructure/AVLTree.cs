@@ -8,22 +8,28 @@ namespace AVLTreeStructure
 {
     public class AVLTree<T> where T : IComparable
     {
+        // protected so that any inheriting classes can acess the root
         protected AVLNode<T> root;
+
+        //Constructor
         public AVLTree()
         {
             root = null;
         }
 
+        //Counstructor
         public AVLTree(AVLNode<T> node)
         {
             root = node;
         }
 
+        // Adds all of the nodes to the buffer string in order
         public void InOrder(ref string buffer)
         {
             inOrder(root, ref buffer);
         }
 
+        // Does the work for the public function
         private void inOrder(AVLNode<T> tree, ref string buffer)
         {
             if (tree != null)
@@ -34,11 +40,13 @@ namespace AVLTreeStructure
             }
         }
 
+        // Adds all of the nodes to the buffer string in the order of insertion
         public void PreOrder(ref string buffer)
         {
             preorder(root, ref buffer);
         }
 
+        // Does the work for the public function
         private void preorder(AVLNode<T> tree, ref string buffer)
         {
             if (tree != null)
@@ -49,11 +57,13 @@ namespace AVLTreeStructure
             }
         }
 
+        // Adds all of the nodes to the buffer string in the order after insertion
         public void PostOrder(ref string buffer)
         {
             postOrder(root, ref buffer);
         }
 
+        // Does the work for the public function
         private void postOrder(AVLNode<T> tree, ref string buffer)
         {
             if (tree != null)
@@ -64,6 +74,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // Returns the number of nodes in the tree
         public int Count()
         {
             int counter = 0;
@@ -81,6 +92,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // Returns the height of the tree
         public int Height()
         {
             return height(root);
@@ -98,6 +110,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // Boolean to determine whether the tree contains an item
         public Boolean Contains(T item)
         {
             return contains(item, root);
@@ -119,6 +132,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // Removes an item from the tree and rebalances the tree
         public void RemoveItem(T item)
         {
             removeItem(item, ref root);
@@ -171,6 +185,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // The left most item on the current branch
         private T leastItem(AVLNode<T> tree)
         {
             if (tree.Left == null)
@@ -183,6 +198,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // Inserts an item into the tree and rebalances the tree if required
         public void InsertItem(T item)
         {
             insertItem(item, ref root);
@@ -213,6 +229,7 @@ namespace AVLTreeStructure
             }
         }
 
+        // Rebalance tree
         private void rotateLeft(ref AVLNode<T> tree)
         {
             if (tree.Right == null)
@@ -229,6 +246,7 @@ namespace AVLTreeStructure
             tree = pivot;
         }
 
+        // Rebalance Tree
         private void rotateRight(ref AVLNode<T> tree)
         {
             if (tree.Left == null)

@@ -15,6 +15,8 @@ namespace International_trading_data_14042553
     public partial class AddCountryForm : Form
     {
         TradingDataForm MainForm;
+        // pass in an instance of the main form to access all required methods
+
         public AddCountryForm(TradingDataForm form)
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace International_trading_data_14042553
             this.MainForm = form;
         }
 
+        // Adds a trade partner to the country
         private void AddTPBtn_Click(object sender, EventArgs e)
         {
             if (AddTPTB.Text.Length > 0)
@@ -45,6 +48,7 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Removes either top trade partner in the list or selected trade partner
         private void RemoveTPBtn_Click(object sender, EventArgs e)
         {
             if(TradePartnersLB.Items.Count > 0)
@@ -64,26 +68,29 @@ namespace International_trading_data_14042553
             }
         }
 
+        // placeholder text
         private void AddTPTB_Enter(object sender, EventArgs e)
         {
             AddTPTB.Text = "";
         }
-
+        // Placeholder text
         private void AddTPTB_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(AddTPTB.Text))
                 AddTPTB.Text = "Add Trade Partner...";
         }
 
+        //Closes the form
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Adds the Country to the tree
         private void AddCountryBtn_Click(object sender, EventArgs e)
         {
             bool errors = CountryNameTB.Text.Length == 0;
-            Console.WriteLine(errors);
+            Trace.WriteLine(errors);
             if (!errors){
                 LinkedList<string> TP = new LinkedList<string>();
                 foreach (string partner in TradePartnersLB.Items)
@@ -99,9 +106,6 @@ namespace International_trading_data_14042553
             {
                 MessageBox.Show("Please enter a valid country name!", "Error", MessageBoxButtons.OK);
             }
-            // Create country object and add it to the tree
-            // TODO: valdation of this
-            
         }
     }
 }

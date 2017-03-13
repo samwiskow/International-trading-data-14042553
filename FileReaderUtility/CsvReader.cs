@@ -10,10 +10,10 @@ namespace FileReaderUtility
 {
     public class CsvReader
     {
-        static string[] headers = new string[6]; //column headers
+        static string[] headers = new string[6];
         const int MAX_LINES_FILE = 50000;
         private string[] AllLines = new string[MAX_LINES_FILE];
-        // some sort of array to hold all the csv informaion
+        // List to hold the country information from csv file
         private List<Country> countryList = new List<Country>();
 
         public CsvReader()
@@ -32,7 +32,7 @@ namespace FileReaderUtility
             set { this.countryList = value; }
         }
 
-
+        // Reads a csv file
         public void readCsvIn()
         {
             AllLines = File.ReadAllLines("countries.csv");

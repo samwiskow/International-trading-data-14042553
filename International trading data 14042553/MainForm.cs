@@ -20,6 +20,10 @@ namespace International_trading_data_14042553
         CSVWriter csvWrite = new CSVWriter();
         List<Country> Buffer = new List<Country>();
 
+        // Constructor
+        // Reads the csv file and populates a Tree for the application to use
+        // Also sets placeholders for the search and add trade partner textboxes
+        // Populates the listview with country names
         public TradingDataForm()
         {
             csvRead.readCsvIn();
@@ -30,6 +34,7 @@ namespace International_trading_data_14042553
             populateListView("");
         }
 
+        // creates a listview item fom the country object - Tag is to access the original object
         public static void CreateListViewItem(ListView listView, Country obj)
         {
             ListViewItem item = new ListViewItem();
@@ -38,11 +43,13 @@ namespace International_trading_data_14042553
             listView.Items.Add(item);
         }
 
+        // When the user selects a different item on the list view the relevant country info is displayed
         private void CountryLV_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             GetCountryInfo(e.Item.Text);
         }
 
+        // This function populates the listview
         public void populateListView(string name)
         {
             CountryLV.Items.Clear();
@@ -51,22 +58,26 @@ namespace International_trading_data_14042553
             Buffer.ForEach(item => CreateListViewItem(CountryLV, item));
         }
 
+        // resposible for the partial keyword search
         private void SearchTB_TextChanged(object sender, EventArgs e)
         {
             populateListView(SearchTB.Text);
         }
 
+        // Placeholder function - removes placeholder on focus 
         private void SearchTB_Enter(object sender, EventArgs e)
         {
             SearchTB.Text = "";
         }
 
+        // Placeholder function - adds placeholder when not focused
         private void SearchTB_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(SearchTB.Text))
                 SearchTB.Text = "Search countries...";
         }
 
+       // Gets individual country info
         private void GetCountryInfo(string name)
         {
             Country country = CTree.GetNodeByName(name);
@@ -85,6 +96,8 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Removes selected Trade partner
+        // If no trade partner selected, removes the top one
         private void RemoveTPBtn_MouseClick(object sender, MouseEventArgs e)
         {
             if (TradePartnersLB.SelectedIndex >= 0)
@@ -101,6 +114,7 @@ namespace International_trading_data_14042553
             }
         }
 
+        // resets any changes on the currently selected company
         private void ResetBtn_MouseClick(object sender, MouseEventArgs e)
         {
             try
@@ -121,6 +135,7 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Saves the changes made to the current country to the tree
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             try
@@ -135,6 +150,7 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Function that actually saves the currently displayed information to the country (Node) in the tree
         private void SetCountryInfo(string name)
         {
             Country country = CTree.GetNodeByName(name);
@@ -151,6 +167,7 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Removes the selected country from the tree
         private void RmvCountryBtn_Click(object sender, EventArgs e)
         {
             if (CountryNameTB.Text.Length > 0)
@@ -180,6 +197,7 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Resets all the info fields to default
         private void resetCountryInfoFields()
         {
             CountryNameTB.Text = "";
@@ -190,6 +208,7 @@ namespace International_trading_data_14042553
             HdiUD.Value = 0;
         }
 
+        // Adds a trade partner to the currently selected country
         private void AddTPBtn_Click(object sender, EventArgs e)
         {
             if (CountryNameTB.Text.Length > 0)
@@ -221,17 +240,20 @@ namespace International_trading_data_14042553
             }
         }
 
+        // Placeholder function - removes placeholder on focus 
         private void AddTradePartnerTB_Enter(object sender, EventArgs e)
         {
             AddTradePartnerTB.Text = "";
         }
 
+        // Placeholder function - adds placeholder back when not focused
         private void AddTradePartnerTB_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(AddTradePartnerTB.Text))
                 AddTradePartnerTB.Text = "Add Trade Partner...";
         }
 
+        // opens a new form so that the user can add a country
         private void AddCountryBtn_Click(object sender, EventArgs e)
         {
             //Open new form here
@@ -239,32 +261,38 @@ namespace International_trading_data_14042553
             addCountry.Show();
         }
 
+        // public method so that the add country form can add a country easily
         public void AddCountry(Country C)
         {
             CTree.InsertItem(C);
         }
 
+        // exits the application
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Returns the height of the tree - public so that it can be accesed by another form
         public int getHeight()
         {
             return CTree.Height();
         }
 
+        // Returns how many nodes are in the tree - public so that it can be accesed by another form
         public int getCount()
         {
             return CTree.Count();
         }
 
+        // opens a new form that displays information about the tree
         private void treeInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeInfoForm TreeInfoForm = new TreeInfoForm(this);
             TreeInfoForm.Show();
         }
 
+        // Returns the country with the best in the tree - public so that it can be accesed by another form
         public string GetBestTradePotential()
         {
             string country = "";
