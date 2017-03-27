@@ -93,6 +93,9 @@ namespace International_trading_data_14042553
                 {
                     TradePartnersLB.Items.Add(partner);
                 }
+                string partnerBestpotential = "";
+                CTree.CalculateBestTradePartnerPotential(ref partnerBestpotential, country.TradePartners);
+                partnerPotentialTB.Text = partnerBestpotential;
             }
         }
 

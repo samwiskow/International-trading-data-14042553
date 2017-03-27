@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportTreeToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCountryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,8 @@
             this.CountryInfoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.AddTradePartnerTB = new System.Windows.Forms.TextBox();
             this.AddTPBtn = new System.Windows.Forms.Button();
-            this.exportTreeToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.partnerTPLabel = new System.Windows.Forms.Label();
+            this.partnerPotentialTB = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HdiUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TradeBalanceUD)).BeginInit();
@@ -102,6 +104,13 @@
             this.treeInformationToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.treeInformationToolStripMenuItem.Text = "Tree Information";
             this.treeInformationToolStripMenuItem.Click += new System.EventHandler(this.treeInformationToolStripMenuItem_Click);
+            // 
+            // exportTreeToCSVToolStripMenuItem
+            // 
+            this.exportTreeToCSVToolStripMenuItem.Name = "exportTreeToCSVToolStripMenuItem";
+            this.exportTreeToCSVToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exportTreeToCSVToolStripMenuItem.Text = "Export Tree to CSV";
+            this.exportTreeToCSVToolStripMenuItem.Click += new System.EventHandler(this.exportTreeToCSVToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -391,18 +400,30 @@
             this.AddTPBtn.UseVisualStyleBackColor = true;
             this.AddTPBtn.Click += new System.EventHandler(this.AddTPBtn_Click);
             // 
-            // exportTreeToCSVToolStripMenuItem
+            // partnerTPLabel
             // 
-            this.exportTreeToCSVToolStripMenuItem.Name = "exportTreeToCSVToolStripMenuItem";
-            this.exportTreeToCSVToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.exportTreeToCSVToolStripMenuItem.Text = "Export Tree to CSV";
-            this.exportTreeToCSVToolStripMenuItem.Click += new System.EventHandler(this.exportTreeToCSVToolStripMenuItem_Click);
+            this.partnerTPLabel.AutoSize = true;
+            this.partnerTPLabel.Location = new System.Drawing.Point(157, 215);
+            this.partnerTPLabel.Name = "partnerTPLabel";
+            this.partnerTPLabel.Size = new System.Drawing.Size(156, 13);
+            this.partnerTPLabel.TabIndex = 16;
+            this.partnerTPLabel.Text = "Partner with best trade potential";
+            // 
+            // partnerPotentialTB
+            // 
+            this.partnerPotentialTB.Location = new System.Drawing.Point(319, 212);
+            this.partnerPotentialTB.Name = "partnerPotentialTB";
+            this.partnerPotentialTB.ReadOnly = true;
+            this.partnerPotentialTB.Size = new System.Drawing.Size(127, 20);
+            this.partnerPotentialTB.TabIndex = 17;
             // 
             // TradingDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 303);
+            this.Controls.Add(this.partnerPotentialTB);
+            this.Controls.Add(this.partnerTPLabel);
             this.Controls.Add(this.AddTPBtn);
             this.Controls.Add(this.AddTradePartnerTB);
             this.Controls.Add(this.RemoveTPBtn);
@@ -462,6 +483,8 @@
         private System.Windows.Forms.ToolStripMenuItem addCountryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedCountryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportTreeToCSVToolStripMenuItem;
+        private System.Windows.Forms.Label partnerTPLabel;
+        private System.Windows.Forms.TextBox partnerPotentialTB;
     }
 }
 

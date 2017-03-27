@@ -105,5 +105,37 @@ namespace AVLTreeStructure.Country
                 calculateBestTradePotentail(ref bestCountry, ref tradePotential, tree.Right);
             }
         }
+
+        public void CalculateBestTradePartnerPotential(ref string bestCountry, LinkedList<string> partners)
+        {
+            double tradePotential = 0;
+            calculateBestTradePartnerPotential(ref bestCountry, ref tradePotential, partners);
+        }
+
+
+        // Here it is assumed that a countries trade potentail is calculated by the sum of the gdpGrowth attribute of all of that 
+        // country's trade partners
+        private void calculateBestTradePartnerPotential(ref string bestCountry, ref double tradePotential, LinkedList<string> partners)
+        {
+            double tempTradePot = 0;
+
+            foreach (string country in partners)
+            {
+
+                Country temp = GetNodeByName(country);
+
+                if (temp != null)
+                {
+                    tempTradePot += temp.gdpGrowth;
+                }
+
+                if (tempTradePot > tradePotential)
+                {
+                    tradePotential = tempTradePot;
+                    bestCountry = country;
+                }
+            }
+            
+        }
     }//Class
 }
